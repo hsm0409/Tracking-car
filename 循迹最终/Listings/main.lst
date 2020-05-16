@@ -1,0 +1,510 @@
+C51 COMPILER V9.52.0.0   MAIN                                                              05/04/2019 16:15:44 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\MDK4\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main.ls
+                    -t) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <reg52.h>
+   2          
+   3          sbit light1=P2^0;
+   4          sbit light2=P2^1;
+   5          
+   6          sbit light5=P2^2;
+   7          sbit light6=P2^3;
+   8          
+   9          sbit     sensor1=P1^5;
+  10          sbit     sensor2=P1^6;
+  11          
+  12          sbit IN1=P1^1;
+  13          sbit IN2=P1^2;
+  14          
+  15          sbit IN3=P1^3;
+  16          sbit IN4=P1^4;
+  17          sbit PWMA=P2^4;
+  18          sbit PWMB=P2^5;
+  19          
+  20          void gostraight();
+  21          void goleft();
+  22          void goright();
+  23          void stop();
+  24          void backleft();
+  25          void backright();
+  26          
+  27          void turnleft();
+  28          void turnright();
+  29          
+  30          void maxleft();
+  31          void maxright();
+  32          void delay(unsigned int xms)                            
+  33          {
+  34   1              unsigned int i,j;
+  35   1              for(i=xms;i>0;i--)                    //
+  36   1                      for(j=112;j>0;j--);
+  37   1      }
+  38          
+  39          
+  40          void newdelay(unsigned int xms)         
+  41          {
+  42   1                unsigned int k;
+  43   1              while(k--);
+  44   1      }
+*** WARNING C280 IN LINE 40 OF main.c: 'xms': unreferenced local variable
+  45          
+  46          void time1clock();//84  88         188     196
+  47                  unsigned int pwmA=94;
+  48                  unsigned int pwmB=100;
+  49                  unsigned int num=0;
+  50          
+  51          timeleft=1;
+  52          timeright=1;
+  53          
+C51 COMPILER V9.52.0.0   MAIN                                                              05/04/2019 16:15:44 PAGE 2   
+
+  54          int main()
+  55          {
+  56   1              time1clock();
+  57   1      while(1)
+  58   1      {
+  59   2           if(light1==0&&light2==1&&light5==1&&light6==0)
+  60   2      {
+  61   3      
+  62   3                      if(sensor2==0)
+  63   3              {
+  64   4                      
+  65   4              gostraight();
+  66   4      
+  67   4              }
+  68   3              else{
+  69   4      IN1=0;
+  70   4      IN2=0;
+  71   4      IN3=0;
+  72   4      IN4=0;
+  73   4      delay(80);
+  74   4      IN1=1;
+  75   4      IN2=0;
+  76   4      IN3=0;
+  77   4      IN4=1;
+  78   4      delay(30);
+  79   4      IN1=0;
+  80   4      IN2=1;
+  81   4      IN3=0;
+  82   4      IN4=1;
+  83   4      delay(10);              
+  84   4                      
+  85   4              }
+  86   3      
+  87   3      }
+  88   2      
+  89   2      
+  90   2      else if(light1==0&&light2==1&&light5==0&&light6==0)
+  91   2      {
+  92   3              if(sensor2==0)
+  93   3              {
+  94   4                      
+  95   4      goleft();
+  96   4      
+  97   4              }       
+  98   3              else{IN1=0;
+  99   4      IN2=0;
+ 100   4      IN3=0;
+ 101   4      IN4=0;
+ 102   4      delay(80);
+ 103   4      IN1=1;
+ 104   4      IN2=0;
+ 105   4      IN3=0;
+ 106   4      IN4=1;
+ 107   4      delay(30);
+ 108   4      IN1=0;
+ 109   4      IN2=1;
+ 110   4      IN3=0;
+ 111   4      IN4=1;
+ 112   4      delay(10);              
+ 113   4                      
+ 114   4              }
+ 115   3              
+C51 COMPILER V9.52.0.0   MAIN                                                              05/04/2019 16:15:44 PAGE 3   
+
+ 116   3      
+ 117   3      }
+ 118   2      else if(light1==1&&light2==1&&light5==0&&light6==0)
+ 119   2      {
+ 120   3              if(sensor2==0)
+ 121   3              {
+ 122   4              
+ 123   4                      
+ 124   4      turnleft();
+ 125   4              }
+ 126   3              else{IN1=0;
+ 127   4      IN2=0;
+ 128   4      IN3=0;
+ 129   4      IN4=0;
+ 130   4      delay(80);
+ 131   4      IN1=1;
+ 132   4      IN2=0;
+ 133   4      IN3=0;
+ 134   4      IN4=1;
+ 135   4      delay(30);
+ 136   4      IN1=0;
+ 137   4      IN2=1;
+ 138   4      IN3=0;
+ 139   4      IN4=1;
+ 140   4      delay(10);              
+ 141   4                      
+ 142   4              }
+ 143   3      
+ 144   3      }
+ 145   2      
+ 146   2      else if(light1==1&&light2==0&&light5==0&&light6==0)
+ 147   2      {
+ 148   3              if(sensor2==0)
+ 149   3              {
+ 150   4              
+ 151   4                      
+ 152   4      turnleft();
+ 153   4              }
+ 154   3              else{IN1=0;
+ 155   4      IN2=0;
+ 156   4      IN3=0;
+ 157   4      IN4=0;
+ 158   4      delay(80);
+ 159   4      IN1=1;
+ 160   4      IN2=0;
+ 161   4      IN3=0;
+ 162   4      IN4=1;
+ 163   4      delay(30);
+ 164   4      IN1=0;
+ 165   4      IN2=1;
+ 166   4      IN3=0;
+ 167   4      IN4=1;
+ 168   4      delay(10);              
+ 169   4                      
+ 170   4              }
+ 171   3      }
+ 172   2      else if(light1==1&&light2==1&&light5==1&&light6==0)
+ 173   2      {
+ 174   3              if(sensor2==0)
+ 175   3              {
+ 176   4              
+ 177   4                      
+C51 COMPILER V9.52.0.0   MAIN                                                              05/04/2019 16:15:44 PAGE 4   
+
+ 178   4      turnleft();
+ 179   4              }
+ 180   3              else{
+ 181   4      IN1=0;
+ 182   4      IN2=0;
+ 183   4      IN3=0;
+ 184   4      IN4=0;
+ 185   4      delay(80);
+ 186   4      IN1=1;
+ 187   4      IN2=0;
+ 188   4      IN3=0;
+ 189   4      IN4=1;
+ 190   4      delay(30);
+ 191   4      IN1=0;
+ 192   4      IN2=1;
+ 193   4      IN3=0;
+ 194   4      IN4=1;
+ 195   4      delay(10);              
+ 196   4                      
+ 197   4              }
+ 198   3      }
+ 199   2      
+ 200   2              
+ 201   2      
+ 202   2       else if(light1==0&&light2==0&&light5==1&&light6==0)
+ 203   2      {
+ 204   3              goright(); //   
+ 205   3                      
+ 206   3      }
+ 207   2       else if(light1==0&&light2==0&&light5==0&&light6==1)
+ 208   2      {
+ 209   3      turnright(); 
+ 210   3      }
+ 211   2      else if(light1==0&&light2==0&&light5==1&&light6==1)
+ 212   2      {
+ 213   3      turnright(); 
+ 214   3      }
+ 215   2      else if(light1==0&&light2==1&&light5==1&&light6==1)
+ 216   2      {
+ 217   3              
+ 218   3              /*if(timeright==1)
+ 219   3              {
+ 220   3                      turnleft();
+ 221   3              timeright++;    
+ 222   3              
+ 223   3              }*/
+ 224   3              /*if(sensor1==1&&timeright==1)
+ 225   3              {
+ 226   3              gostraight();
+ 227   3              timeright++;
+ 228   3              }
+ 229   3              else
+ 230   3      {
+ 231   3              
+ 232   3      }*/
+ 233   3                      turnright(); 
+ 234   3              
+ 235   3      }
+ 236   2      else if (sensor1==1&&light1==1&&light2==1&&light5==1&&light6==1&&sensor2==1)
+ 237   2      {
+ 238   3      stop();
+ 239   3      }
+C51 COMPILER V9.52.0.0   MAIN                                                              05/04/2019 16:15:44 PAGE 5   
+
+ 240   2      else if (light1==1&&light2==1&&light5==1&&light6==1)
+ 241   2      {
+ 242   3      stop();
+ 243   3              delay(3);
+ 244   3      }
+ 245   2      //脱离轨道
+ 246   2      else if (sensor1==1&&light1==0&&light2==0&&light5==0&&light6==0&&sensor2==0)
+ 247   2      {
+ 248   3        maxleft();//turnleft();
+ 249   3      }
+ 250   2      
+ 251   2      
+ 252   2      else if (sensor1==0&&light1==0&&light2==0&&light5==0&&light6==0&&sensor2==1)
+ 253   2      {
+ 254   3              
+ 255   3      maxright();//turnright();
+ 256   3              
+ 257   3      }
+ 258   2      
+ 259   2      else if (sensor1==1&&sensor2==1)
+ 260   2      {
+ 261   3              maxright();
+ 262   3              
+ 263   3      }
+ 264   2      
+ 265   2      
+ 266   2      
+ 267   2      
+ 268   2      
+ 269   2      
+ 270   2      
+ 271   2      
+ 272   2      
+ 273   2      
+ 274   2      else if (light1==0&&light2==0&&light5==0&&light6==0)
+ 275   2      {
+ 276   3      gostraight();
+ 277   3      }
+ 278   2      
+ 279   2      else 
+ 280   2      {
+ 281   3      gostraight();
+ 282   3      }
+ 283   2      }
+ 284   1      }
+ 285          
+ 286          
+ 287          //子函数
+ 288          
+ 289          void time1clock()
+ 290          {       
+ 291   1      EA=1;
+ 292   1      ET1=1;                                            
+ 293   1      TMOD=0x10;                                      
+ 294   1              TH1=0xFF;//倒计时1ms
+ 295   1              TL1=0xff;
+ 296   1      TR1=1;                                          
+ 297   1      }
+ 298          
+ 299          void time1() interrupt 3        
+ 300          {
+ 301   1      
+C51 COMPILER V9.52.0.0   MAIN                                                              05/04/2019 16:15:44 PAGE 6   
+
+ 302   1              TH1=0xFF;//倒计时1us
+ 303   1              TL1=0xff;
+ 304   1      num++;
+ 305   1      if(num>400)
+ 306   1      {num=0;
+ 307   2      }
+ 308   1      if(num<=pwmA)
+ 309   1      {
+ 310   2      PWMA=1;
+ 311   2      
+ 312   2      }               
+ 313   1      else{ 
+ 314   2      PWMA=0;   }
+ 315   1      
+ 316   1      
+ 317   1      if(num<=pwmB)
+ 318   1      {
+ 319   2      PWMB=1 ;
+ 320   2      }       
+ 321   1      else
+ 322   1      {PWMB=0;
+ 323   2      }
+ 324   1      }
+ 325          
+ 326          void maxright()
+ 327          {
+ 328   1      
+ 329   1      IN1=1;
+ 330   1      IN2=0;
+ 331   1      IN3=0;
+ 332   1      IN4=1;
+ 333   1      delay(3);
+ 334   1      IN1=0;
+ 335   1      IN2=0;
+ 336   1      IN3=0;
+ 337   1      IN4=0;
+ 338   1      }
+ 339          
+ 340          
+ 341          void maxleft()
+ 342          {
+ 343   1      
+ 344   1      IN1=0;
+ 345   1      IN2=1;
+ 346   1      IN3=1;
+ 347   1      IN4=0;
+ 348   1      delay(6);
+ 349   1      IN1=0;
+ 350   1      IN2=0;
+ 351   1      IN3=0;
+ 352   1      IN4=0;
+ 353   1      }
+ 354          
+ 355          
+ 356          void turnright()
+ 357          {
+ 358   1      
+ 359   1      IN1=1;
+ 360   1      IN2=0;
+ 361   1      IN3=0;
+ 362   1      IN4=1;
+ 363   1      delay(1);
+C51 COMPILER V9.52.0.0   MAIN                                                              05/04/2019 16:15:44 PAGE 7   
+
+ 364   1      IN1=0;
+ 365   1      IN2=0;
+ 366   1      IN3=0;
+ 367   1      IN4=0;
+ 368   1      }
+ 369          
+ 370          
+ 371          void turnleft()
+ 372          {
+ 373   1      
+ 374   1      IN1=0;
+ 375   1      IN2=1;
+ 376   1      IN3=1;
+ 377   1      IN4=0;
+ 378   1      delay(1);
+ 379   1      IN1=0;
+ 380   1      IN2=0;
+ 381   1      IN3=0;
+ 382   1      IN4=0;
+ 383   1      }
+ 384          
+ 385          void gostraight()
+ 386          {
+ 387   1      
+ 388   1      IN1=0;
+ 389   1      IN2=1;
+ 390   1      IN3=0;
+ 391   1      IN4=1;
+ 392   1      delay(1);
+ 393   1      IN1=0;
+ 394   1      IN2=0;
+ 395   1      IN3=0;
+ 396   1      IN4=0;
+ 397   1      }
+ 398          void goright()
+ 399          {
+ 400   1      
+ 401   1      IN1=0;
+ 402   1      IN2=0;
+ 403   1      IN3=0;
+ 404   1      IN4=1;
+ 405   1      delay(1);
+ 406   1      IN1=0;
+ 407   1      IN2=0;
+ 408   1      IN3=0;
+ 409   1      IN4=0;
+ 410   1      
+ 411   1      }
+ 412          void goleft()
+ 413          {
+ 414   1      
+ 415   1      IN1=0;
+ 416   1      IN2=1;
+ 417   1      IN3=0;
+ 418   1      IN4=0;
+ 419   1      delay(1);
+ 420   1      IN1=0;
+ 421   1      IN2=0;
+ 422   1      IN3=0;
+ 423   1      IN4=0;
+ 424   1      
+ 425   1      }
+C51 COMPILER V9.52.0.0   MAIN                                                              05/04/2019 16:15:44 PAGE 8   
+
+ 426          
+ 427          
+ 428          void stop()
+ 429          {
+ 430   1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+             -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+             -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+             -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+             -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+             -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+             -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+             -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+             -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ;
+ 431   1      IN1=0;
+ 432   1      IN2=0;
+ 433   1      IN3=0;
+ 434   1      IN4=0;
+ 435   1      
+ 436   1      }
+ 437          void backleft()
+ 438          {
+ 439   1      
+ 440   1      IN1=1;
+ 441   1      IN2=0;
+ 442   1      IN3=0;
+ 443   1      IN4=0;
+ 444   1              delay(3);
+ 445   1      IN1=0;
+ 446   1      IN2=0;
+ 447   1      IN3=0;
+ 448   1      IN4=0;
+ 449   1      }
+ 450          void backright()
+ 451          {
+ 452   1      
+ 453   1      IN1=0;
+ 454   1      IN2=0;
+ 455   1      IN3=1;
+ 456   1      IN4=0;
+ 457   1              delay(3);
+ 458   1      IN1=0;
+ 459   1      IN2=0;
+ 460   1      IN3=0;
+ 461   1      IN4=0;
+ 462   1      }
+ 463          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    671    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     10       4
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,50 @@
+C51 COMPILER V9.52.0.0   RIGHT                                                             05/01/2019 19:43:18 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE RIGHT
+OBJECT MODULE PLACED IN .\Objects\right.obj
+COMPILER INVOKED BY: D:\MDK4\C51\BIN\C51.EXE right.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\right.
+                    -lst) OBJECT(.\Objects\right.obj)
+
+line level    source
+
+   1          #include<reg52.h>
+   2          
+   3          sbit IN1=P1^1;
+   4          sbit IN2=P1^2;
+   5          sbit IN3=P1^3;
+   6          sbit IN4=P1^4;
+   7          
+   8          void delay(unsigned int xms)                            
+   9          {
+  10   1              unsigned int i,j;
+  11   1              for(i=xms;i>0;i--)                    //
+  12   1                      for(j=112;j>0;j--);
+  13   1      }
+  14          void goright()
+  15          {
+  16   1      
+  17   1      IN1=0;
+  18   1      IN2=1;
+  19   1      IN3=0;
+  20   1      IN4=0;
+  21   1              delay(3);
+  22   1      IN1=0;
+  23   1      IN2=0;
+  24   1      IN3=0;
+  25   1      IN4=0;
+  26   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     54    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

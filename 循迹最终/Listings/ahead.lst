@@ -1,0 +1,50 @@
+C51 COMPILER V9.52.0.0   AHEAD                                                             05/01/2019 19:43:17 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE AHEAD
+OBJECT MODULE PLACED IN .\Objects\ahead.obj
+COMPILER INVOKED BY: D:\MDK4\C51\BIN\C51.EXE ahead.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\ahead.
+                    -lst) OBJECT(.\Objects\ahead.obj)
+
+line level    source
+
+   1          #include<reg52.h>
+   2          sbit IN1=P1^1;
+   3          sbit IN2=P1^2;
+   4          sbit IN3=P1^3;
+   5          sbit IN4=P1^4;
+   6          void delay(unsigned int xms)                            
+   7          {
+   8   1              unsigned int i,j;
+   9   1              for(i=xms;i>0;i--)                    //
+  10   1                      for(j=112;j>0;j--);
+  11   1      }
+  12          
+  13          void gostraight()
+  14          {
+  15   1      
+  16   1      IN1=0;
+  17   1      IN2=1;
+  18   1      IN3=0;
+  19   1      IN4=1;
+  20   1              delay(3);
+  21   1      IN1=0;
+  22   1      IN2=0;
+  23   1      IN3=0;
+  24   1      IN4=0;
+  25   1      }
+  26          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     54    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
